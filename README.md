@@ -1,8 +1,8 @@
 # stern-code-review
 
-A Claude Code skill that performs a blunt, senior-level code review focused on
-production risk — correctness, data safety, security, operational reliability —
-not style nits.
+A dual-use Codex/Claude skill that performs a blunt, senior-level code review
+focused on production risk: correctness, data safety, security, operational
+reliability, and weak tests rather than style nits.
 
 ## Purpose
 
@@ -14,12 +14,14 @@ implementation, or purely stylistic feedback.
 ## Usage
 
 ```
-/stern-code-review <files, a diff, or a description>
+$stern-code-review <files, a diff, PR, or description>
+/stern-code-review <files, a diff, PR, or description>
 ```
 
-Or just ask for "a stern code review" of something in context. Arguments are
-treated as the review target; if scope is unclear the skill asks before
-reviewing everything, and for large changesets it starts with the riskiest files.
+Or ask for "a stern code review" of something in context. The skill treats the
+referenced files, diff, PR, command arguments, or description as the review
+target. If scope is unclear, it asks before reviewing everything. For large
+changesets, it starts with the riskiest files.
 
 ## How it works
 
@@ -49,3 +51,10 @@ The skill steers the review with a few rules:
 Each finding carries a severity (`blocker` / `major` / `minor`), a confidence
 (`confirmed` / `suspected`), a location, the problem, why it matters, and a
 suggested fix.
+
+## Skill contents
+
+- `SKILL.md` contains the runtime instructions and skill trigger metadata.
+- `agents/openai.yaml` contains UI metadata for Codex skill lists.
+- `references/calibration-transcripts.md` contains expected output examples for
+  maintaining the skill.

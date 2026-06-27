@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stern Code Review"
+  short_description: "Production-risk focused code review"
+  default_prompt: "Use $stern-code-review to review this diff for correctness, data safety, security, operational reliability, and weak tests."
